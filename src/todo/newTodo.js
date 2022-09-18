@@ -14,9 +14,9 @@ function NewTodo({addTodo}) {
     return ( 
         <form action="" onSubmit={handleSubmit}>
             <div className='form-group'>
-              <label>Add Your Todo:</label>
+              <label>Add Your Todo: </label>
               <input type="text" onChange={handleNewTodo} value={newTodo} name="newNode" />
-              <button type="submit">Submit</button>
+              <button type="submit"> Submit</button>
             </div>
             
 
