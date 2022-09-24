@@ -8,6 +8,7 @@ import Event_Handler from './event_handler';
 import Form from './form_control';
 import Hooks from './hooks';
 import HomeTodos from './todo/Home.js';
+import Toggle from './toggle/Toggle';
 
 
 
@@ -53,6 +54,7 @@ function App() {
       <DynamicStyling/>
       <Form/>
       <HomeTodos/>
+      <Toggle/>
     </div>
   );
 }
