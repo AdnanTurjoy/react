@@ -45,13 +45,13 @@ function App() {
   return (
     <div className="App">
       {/* <Card football={football}/> */}
-      {/* <Conditional_rendering />
+      <Conditional_rendering />
       <Event_Handler />
       <Hooks />
       <DynamicStyling />
       <Form />
       <HomeTodos />
-      <Toggle /> */}
+      <Toggle />
       <Faqs />
     </div>
   );
