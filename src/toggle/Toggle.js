@@ -5,6 +5,7 @@ function Toggle() {
   console.log(toggle);
   return (
     <div>
+        
       {toggle && (
         <p
           style={{
