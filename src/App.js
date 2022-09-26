@@ -6,6 +6,7 @@ import DynamicStyling from "./dynamic_styling";
 import Event_Handler from "./event_handler";
 import Faqs from "./faq/Faqs";
 import Fetching1 from "./fetch/Fetching1";
+import Axios from "./fetch/Axios";
 import Form from "./form_control";
 import Hooks from "./hooks";
 import HomeTodos from "./todo/Home.js";
@@ -55,6 +56,7 @@ function App() {
       <Toggle />
       <Faqs />
       <Fetching1 />
+      <Axios />
     </div>
   );
 }
