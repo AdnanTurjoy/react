@@ -18,6 +18,7 @@ function Faq({ id, title, desc }) {
             padding: "20px",
             weight: "45px",
             border: "5px gray solid",
+            
           }}
         >
           {desc}
