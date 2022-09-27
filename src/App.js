@@ -11,6 +11,7 @@ import Form from "./form_control";
 import Hooks from "./hooks";
 import HomeTodos from "./todo/Home.js";
 import Toggle from "./toggle/Toggle";
+import UseRef from "./useRef";
 
 const football = [
   {
@@ -55,8 +56,9 @@ function App() {
       <HomeTodos />
       <Toggle />
       <Faqs />
-      <Fetching1 />
+      {/* <Fetching1 /> */}
       <Axios />
+      <UseRef />
     </div>
   );
 }
