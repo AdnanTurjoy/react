@@ -12,6 +12,7 @@ import Hooks from "./hooks";
 import HomeTodos from "./todo/Home.js";
 import Toggle from "./toggle/Toggle";
 import UseRef from "./useRef";
+import UseReducer from "./useReducer/UseReducer";
 
 const football = [
   {
@@ -59,6 +60,7 @@ function App() {
       {/* <Fetching1 /> */}
       <Axios />
       <UseRef />
+      <UseReducer />
     </div>
   );
 }
