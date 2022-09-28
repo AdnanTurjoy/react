@@ -1,4 +1,5 @@
 import React from "react";
+import { useReducer } from "react";
 import { useState } from "react";
 function UseReducer() {
   const data = [
@@ -18,27 +19,52 @@ function UseReducer() {
   const Modal = ({ modalText }) => {
     return <p style={{ color: "green" }}>{modalText}</p>;
   };
-
-  const [books, setBooks] = useState(data);
   const [bookName, setBookName] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalText, setModalText] = useState("");
+
+  const reducer = (state, action) => {
+    if (action.type === "ADD") {
+      const allBooks = [...state.books, action.payload];
+      return {
+        ...state,
+        books: allBooks,
+        isModalOpen: true,
+        modalText: "Book has been added",
+      };
+    }
+    if (action.type === "REMOVE") {
+      const filterBook = [...state.books].filter(
+        (book) => book.id !== action.payload
+      );
+      return {
+        ...state,
+        books: filterBook,
+        isModalOpen: true,
+        modalText: "Book has been Removed",
+      };
+    }
+  };
+  const initialState = {
+    books: data,
+    isModalOpen: false,
+    modalText: "",
+  };
+
+  const [bookState, dispatch] = useReducer(reducer, initialState);
+  console.log(bookState.books);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
       id: new Date().getTime().toString(),
       name: bookName,
     };
-    setBooks([...books, newBook]);
-    setModalOpen(true);
-    setModalText("Book is Added");
-    setTimeout(() => {
-      setModalOpen(false);
-    }, 2000);
+    dispatch({ type: "ADD", payload: newBook });
+  };
+  const handleRemove = (id) => {
+    dispatch({ type: "REMOVE", payload: id });
   };
   return (
     <div>
-      <h1>Book List</h1>
+      <h1>Book List using useReducer</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="">Book: </label>
@@ -48,14 +74,19 @@ function UseReducer() {
             onChange={(e) => setBookName(e.target.value)}
           />
         </div>
-        {isModalOpen && <Modal modalText={modalText} />}
+        {bookState.isModalOpen && <Modal modalText={bookState.modalText} />}
         <div>
           <button type="submit">submit</button>
         </div>
       </form>
-      {books.map((book) => {
+      {bookState.books.map((book) => {
         const { id, name } = book;
-        return <li key={id}>{name}</li>;
+        return (
+          <>
+            <li key={id}>{name}</li>
+            <button onClick={() => handleRemove(id)}>delete</button>
+          </>
+        );
       })}
     </div>
   );
